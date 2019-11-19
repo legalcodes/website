@@ -1,8 +1,8 @@
 ```run-dartpad:theme-dark:mode-flutter:split-60:width-100%:height-400px
 {$ begin main.dart $}
-import 'package:flutter_web/material.dart';
-import 'package:flutter_web_test/flutter_web_test.dart';
-import 'package:flutter_web_ui/ui.dart' as ui;
+import 'package:flutter/material.dart';
+import 'package:flutter_test/flutter_test.dart';
+
 
 class MyWidget extends StatelessWidget {
   @override
@@ -61,7 +61,7 @@ class MyApp extends StatelessWidget {
 }
 
 Future<void> main() async {
-  await ui.webOnlyInitializePlatform();
+  
   
   runApp(MyApp());
 
