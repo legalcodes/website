@@ -7,7 +7,6 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-
 const _duration = Duration(milliseconds: 400);
 
 double randomBorderRadius() {
