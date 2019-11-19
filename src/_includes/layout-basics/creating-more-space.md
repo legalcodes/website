@@ -53,9 +53,16 @@ class MyApp extends StatelessWidget {
 }
 
 Future<void> main() async {
-  
-  
+ final completer = Completer<void>();
+
   runApp(MyApp());
+
+  WidgetsFlutterBinding.ensureInitialized()
+      .addPostFrameCallback((timestamp) async {
+    completer.complete();
+  });
+
+  await completer.future;
 
   final controller = LiveWidgetController(WidgetsBinding.instance);
 
@@ -77,14 +84,14 @@ Future<void> main() async {
     _result(false, ['It\'s best to leave the mainAxisSize set to MainAxisSize.max, so there\'s space for the alignments to take effect.']);
     return;
   }
-  
-  if (row.mainAxisAlignment == MainAxisAlignment.spaceAround 
-      || row.mainAxisAlignment == MainAxisAlignment.spaceBetween 
+
+  if (row.mainAxisAlignment == MainAxisAlignment.spaceAround
+      || row.mainAxisAlignment == MainAxisAlignment.spaceBetween
       || row.mainAxisAlignment == MainAxisAlignment.spaceEvenly) {
     _result(false, ['It\'s best to use MainAxisAlignment.start, MainAxisAlignment.end, or MainAxisAlignment.center to see how the SizedBox widgets work in a Row.']);
     return;
   }
-  
+
   if (row.children.length != 5) {
     _result(false, ['What do you think would happen if you added another Spacer widget with a flex value of 1 between the second and third BlueBox widgets?']);
     return;
@@ -98,14 +105,14 @@ Future<void> main() async {
     _result(false, ['Not quite. Row should contain five children in this order: BlueBox, Spacer, BlueBox, Spacer, BlueBox.']);
     return;
   }
-  
+
     final spacer = row.children[3] as Spacer;
-  
+
     if (spacer.flex != 1) {
     _result(false, ['The Spacer class should have a flex equal to 1.']);
     return;
   }
-  
+
   _result(true, ['Both Spacer widgets create equal amounts of space between all three BlueBox widgets.']);
 }
 {$ end test.dart $}

@@ -92,9 +92,16 @@ class MyApp extends StatelessWidget {
 }
 
 Future<void> main() async {
-  
-  
+ final completer = Completer<void>();
+
   runApp(MyApp());
+
+  WidgetsFlutterBinding.ensureInitialized()
+      .addPostFrameCallback((timestamp) async {
+    completer.complete();
+  });
+
+  await completer.future;
 
   final controller = LiveWidgetController(WidgetsBinding.instance);
 

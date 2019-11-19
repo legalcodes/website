@@ -53,9 +53,16 @@ class MyApp extends StatelessWidget {
 }
 
 Future<void> main() async {
-  
-  
+ final completer = Completer<void>();
+
   runApp(MyApp());
+
+  WidgetsFlutterBinding.ensureInitialized()
+      .addPostFrameCallback((timestamp) async {
+    completer.complete();
+  });
+
+  await completer.future;
 
   final controller = LiveWidgetController(WidgetsBinding.instance);
 
@@ -77,7 +84,7 @@ Future<void> main() async {
     _result(false, ['Row lays out the BlueBox widgets with extra space. Change MainAxisSize.max to MainAxisSize.min']);
     return;
   }
-  
+
   if (row.children.length != 3 || row.children.any((w) => w is! BlueBox)) {
     _result(false, ['There should only be three children, all BlueBox widgets.']);
     return;

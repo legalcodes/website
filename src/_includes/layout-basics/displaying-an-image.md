@@ -37,9 +37,16 @@ class MyApp extends StatelessWidget {
 }
 
 Future<void> main() async {
-  
-  
+ final completer = Completer<void>();
+
   runApp(MyApp());
+
+  WidgetsFlutterBinding.ensureInitialized()
+      .addPostFrameCallback((timestamp) async {
+    completer.complete();
+  });
+
+  await completer.future;
 
   final controller = LiveWidgetController(WidgetsBinding.instance);
 
@@ -61,7 +68,7 @@ Future<void> main() async {
     _result(false, ['It\'s best to leave the mainAxisSize set to MainAxisSize.max, so there\'s space for the alignments to take effect.']);
     return;
   }
- 
+
 }
 {$ end test.dart $}
 ```

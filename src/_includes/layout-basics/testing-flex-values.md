@@ -60,9 +60,16 @@ class MyApp extends StatelessWidget {
 }
 
 Future<void> main() async {
-  
-  
+ final completer = Completer<void>();
+
   runApp(MyApp());
+
+  WidgetsFlutterBinding.ensureInitialized()
+      .addPostFrameCallback((timestamp) async {
+    completer.complete();
+  });
+
+  await completer.future;
 
   final controller = LiveWidgetController(WidgetsBinding.instance);
 
@@ -101,7 +108,7 @@ Future<void> main() async {
   }
 
   final flexibleWidget = row.children[1] as Flexible;
-  
+
   if (flexibleWidget.child == null || flexibleWidget.child is! BlueBox) {
     _result(false, ['The Flexible should have a BlueBox widget as its child.']);
     return;

@@ -56,9 +56,16 @@ class MyApp extends StatelessWidget {
 }
 
 Future<void> main() async {
-  
-  
+ final completer = Completer<void>();
+
   runApp(MyApp());
+
+  WidgetsFlutterBinding.ensureInitialized()
+      .addPostFrameCallback((timestamp) async {
+    completer.complete();
+  });
+
+  await completer.future;
 
   final controller = LiveWidgetController(WidgetsBinding.instance);
 
@@ -80,8 +87,8 @@ Future<void> main() async {
     _result(false, ['It\'s best to leave the mainAxisSize set to MainAxisSize.max, so there\'s space for the alignments to take effect.']);
     return;
   }
-  
-  
+
+
   if (row.children.length != 3) {
     _result(false, ['The Row should end up with three children.']);
     return;
@@ -103,17 +110,17 @@ Future<void> main() async {
   }
 
   final sizedBox = row.children[1] as SizedBox;
-  
+
   if (sizedBox.width != 100) {
     _result(false, ['The SizedBox should have a width of 100.']);
     return;
   }
-  
+
   if (sizedBox.height != 100) {
     _result(false, ['The SizedBox widget resizes the BlueBox widget to 100 logical pixels wide. Add a height property inside SizedBox equal to 100 logical pixels.']);
     return;
   }
-  
+
   _result(true, ['The SizedBox widget resizes the BlueBox widget to 100 logical pixels wide and tall.']);
 }
 {$ end test.dart $}

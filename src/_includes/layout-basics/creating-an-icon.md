@@ -47,9 +47,16 @@ class MyApp extends StatelessWidget {
 }
 
 Future<void> main() async {
-  
-  
+ final completer = Completer<void>();
+
   runApp(MyApp());
+
+  WidgetsFlutterBinding.ensureInitialized()
+      .addPostFrameCallback((timestamp) async {
+    completer.complete();
+  });
+
+  await completer.future;
 
   final controller = LiveWidgetController(WidgetsBinding.instance);
 
@@ -71,21 +78,21 @@ Future<void> main() async {
     _result(false, ['It\'s best to leave the mainAxisSize set to MainAxisSize.max, so there\'s space for the alignments to       take effect.']);
     return;
   }
-  
+
     if (row.children.length != 3 || row.children.any((w) => w is! Icon)) {
     _result(false, ['Row should have three children, all Icon widgets.']);
     return;
   }
 
     final icon = row.children[2] as Icon;
-  
+
   if (icon.color != Colors.amber) {
     _result(false, ['Add a third Icon. Give the Icon a size of 50 and a color of Colors.amber.']);
     return;
   }
-  
+
   _result(true, ['The code displays three Icons in blue, red, and amber.']);
-  
+
 }
 {$ end test.dart $}
 ```

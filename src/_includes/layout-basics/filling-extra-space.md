@@ -52,9 +52,16 @@ class MyApp extends StatelessWidget {
 }
 
 Future<void> main() async {
-  
-  
+ final completer = Completer<void>();
+
   runApp(MyApp());
+
+  WidgetsFlutterBinding.ensureInitialized()
+      .addPostFrameCallback((timestamp) async {
+    completer.complete();
+  });
+
+  await completer.future;
 
   final controller = LiveWidgetController(WidgetsBinding.instance);
 
@@ -71,7 +78,7 @@ Future<void> main() async {
   }
 
   final row = rows.first as Row;
-  
+
   if (row.children.length != 3) {
     _result(false, ['The Row should have three children, all BlueBox widgets.']);
     return;
@@ -91,7 +98,7 @@ Future<void> main() async {
     _result(false, ['The Row\'s third child should be a Flexible widget.']);
     return;
   }
-  
+
   _result(true, ['Expanded forces second BlueBox widget to fill the extra space.']);
 }
 {$ end test.dart $}

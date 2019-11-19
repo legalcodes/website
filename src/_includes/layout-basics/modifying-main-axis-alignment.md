@@ -53,9 +53,16 @@ class MyApp extends StatelessWidget {
 }
 
 Future<void> main() async {
-  
-  
+ final completer = Completer<void>();
+
   runApp(MyApp());
+
+  WidgetsFlutterBinding.ensureInitialized()
+      .addPostFrameCallback((timestamp) async {
+    completer.complete();
+  });
+
+  await completer.future;
 
   final controller = LiveWidgetController(WidgetsBinding.instance);
 
@@ -77,7 +84,7 @@ Future<void> main() async {
     _result(false, ['It\'s best to leave the mainAxisSize set to MainAxisSize.max, so there\'s space for the alignments to take effect.']);
     return;
   }
-  
+
   if (row.children.length != 3 || row.children.any((w) => w is! BlueBox)) {
     _result(false, ['The Row should have three children, all BlueBox widgets.']);
     return;
@@ -95,7 +102,7 @@ Future<void> main() async {
     _result(true, ['The extra space is divided evenly between the BlueBox widgets and before and after them.']);
   } else if (row.mainAxisAlignment == MainAxisAlignment.spaceAround) {
     _result(true, ['Similar to MainAxisAlignment.spaceEvenly, but reduces half of the space before the first BlueBox widget and after the last BlueBox widget to half of the width between the BlueBox widgets.']);
-  }  
+  }
 }
 {$ end test.dart $}
 ```

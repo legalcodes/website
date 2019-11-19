@@ -61,9 +61,16 @@ class MyApp extends StatelessWidget {
 }
 
 Future<void> main() async {
-  
-  
+ final completer = Completer<void>();
+
   runApp(MyApp());
+
+  WidgetsFlutterBinding.ensureInitialized()
+      .addPostFrameCallback((timestamp) async {
+    completer.complete();
+  });
+
+  await completer.future;
 
   final controller = LiveWidgetController(WidgetsBinding.instance);
 
@@ -85,7 +92,7 @@ Future<void> main() async {
     _result(false, ['It\'s best to leave the mainAxisSize set to MainAxisSize.max, so there\'s space for the alignments to take effect.']);
     return;
   }
-  
+
   if (row.children.length != 3 || row.children.any((w) => w is! Text)) {
     _result(false, ['The Row should have three children, all Text widgets.']);
     return;
@@ -94,15 +101,15 @@ Future<void> main() async {
   if (row.textBaseline == null) {
     _result(false, ['To use CrossAxisAlignment.baseline, you need to set the Row\'s textBaseline property.']);
     return;
-  } 
-  
+  }
+
   if (row.crossAxisAlignment != CrossAxisAlignment.baseline) {
     _result(false, ['The Text widgets are positioned at the middle of the cross axis. Change CrossAxisAlignment.center to CrossAxisAlignment.baseline.']);
 		return;
-  }  
+  }
 
   _result(true, ['The Text widgets are now aligned by their character baselines.']);
-  
+
 }
 {$ end test.dart $}
 ```
