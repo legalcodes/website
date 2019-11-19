@@ -2,9 +2,8 @@
 {$ begin main.dart $}
 import 'dart:math';
 
-import 'package:flutter_web/material.dart';
-import 'package:flutter_web_test/flutter_web_test.dart';
-import 'package:flutter_web_ui/ui.dart' as ui;
+import 'package:flutter/material.dart';
+import 'package:flutter_test/flutter_test.dart';
 
 double randomBorderRadius() {
   return Random().nextDouble() * 64;
