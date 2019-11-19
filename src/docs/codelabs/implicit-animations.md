@@ -258,7 +258,7 @@ Change the `Container` widget to an `AnimatedContainer` widget:
 ```diff
 --- container1/lib/main.dart
 +++ container2/lib/main.dart
-@@ -45,7 +45,7 @@
+@@ -44,7 +44,7 @@
              SizedBox(
                width: 128,
                height: 128,
@@ -284,7 +284,7 @@ can use `setState()` to set new values for the `color`, `borderRadius`, and
 ```diff
 --- container2/lib/main.dart
 +++ container3/lib/main.dart
-@@ -36,6 +36,14 @@
+@@ -35,6 +35,14 @@
      margin = randomMargin();
    }
 
@@ -309,7 +309,7 @@ invoke the `change()` method in the `onPressed()` handler:
 ```diff
 --- container3/lib/main.dart
 +++ container4/lib/main.dart
-@@ -67,7 +67,7 @@
+@@ -66,7 +66,7 @@
                  'change',
                  style: TextStyle(color: Colors.white),
                ),
@@ -327,7 +327,8 @@ between the old and new values:
 ```diff
 --- container4/lib/main.dart
 +++ container5/lib/main.dart
-@@ -8,6 +8,8 @@
+@@ -7,6 +7,8 @@
+ import 'package:flutter/material.dart';
  import 'package:flutter_test/flutter_test.dart';
 
 +const _duration = Duration(milliseconds: 400);
@@ -335,7 +336,7 @@ between the old and new values:
  double randomBorderRadius() {
    return Random().nextDouble() * 64;
  }
-@@ -60,6 +62,7 @@
+@@ -59,6 +61,7 @@
                    borderRadius: BorderRadius.circular(borderRadius),
                  ),
                ),
@@ -376,7 +377,15 @@ apply a [linear animation curve] by default. Add a `curve` parameter to the
 ```diff
 --- container5/lib/main.dart
 +++ container6/lib/main.dart
-@@ -63,6 +63,7 @@
+@@ -7,6 +7,7 @@
+ import 'package:flutter/material.dart';
+ import 'package:flutter_test/flutter_test.dart';
+
++
+ const _duration = Duration(milliseconds: 400);
+
+ double randomBorderRadius() {
+@@ -62,6 +63,7 @@
                  ),
                ),
                duration: _duration,
@@ -384,6 +393,14 @@ apply a [linear animation curve] by default. Add a `curve` parameter to the
              ),
              MaterialButton(
                color: Theme.of(context).primaryColor,
+@@ -89,6 +91,7 @@
+ }
+
+ Future<void> main() async {
++
+   runApp(
+     MyApp(),
+   );
 ```
 
 Now that you have passed `easeInOutBack` as the value for `curve` to
