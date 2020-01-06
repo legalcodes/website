@@ -3,7 +3,7 @@ title: Web support for Flutter
 description: "Announcing the tech preview release of Flutter for web."
 ---
 
-Web support is a code-compatible implementation of Flutter that is
+Web support is totally a code-compatible implementation of Flutter that is
 rendered using standards-based web technologies: HTML, CSS and JavaScript.
 With web support, you can compile existing Flutter code written in
 Dart into a client experience that can be embedded in the browser and
