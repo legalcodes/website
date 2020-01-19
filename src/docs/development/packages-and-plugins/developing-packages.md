@@ -170,8 +170,8 @@ This is done using [platform channels][].
 
 ### Specifying a plugin's supported platforms {#plugin-platforms}
 
-Starting Flutter version 1.10 plugins specify their supported platforms by adding keys to the
-`platforms` map in the `pubspec.yaml` file. For example the following showd the `flutter:` map for the "hello" plugin:
+In Flutter 1.10 and later, plugins can specify the platforms they support by adding keys to the
+`platforms` map in the `pubspec.yaml` file. For example the following is the `flutter:` map for the "hello" plugin:
 
 ```
 flutter:

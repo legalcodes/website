@@ -1,5 +1,5 @@
 ---
-title: Preparing an iOS app for release
+title: Build and release an iOS app
 short-title: iOS
 ---
 
@@ -86,6 +86,7 @@ In the **Identity** section:
 `Display Name`
 : The name of the app to be displayed on the home screen and
   elsewhere.
+  
 `Bundle Identifier`
 : The App ID you registered on App Store Connect.
 
@@ -241,24 +242,6 @@ specified in the **Version Release** section.
 For more details, see
 [Distribute an app through the App Store][distributionguide_submit].
 
-Now that you’ve created your app, attract more users with Google Ads.
-App campaigns use machine learning to drive more installs and make
-the most of your budget.
-
-Get your campaign running in a few steps:
-
-1. Create your ad&mdash;we’ll help create your ad from your app
-   information
-1. Choose your budget&mdash;set your target cost-per-install
-   (tCPI) and daily budget cap
-1. Select your location&mdash;let us know where you’d like your ads
-   to run
-1. Decide what action you want users to take&mdash;choose installs,
-   in-app actions, or target return on ad spend (ROAS)
-
-[Get $75 app advertising credit when you spend $25.][]
-
-
 ## Troubleshooting
 
 The [Distribute your app][distributionguide] guide provides a
@@ -269,9 +252,9 @@ detailed overview of the process of releasing an app to the App Store.
 [appsigning]: https://help.apple.com/xcode/mac/current/#/dev154b28f09
 [appstore]: https://developer.apple.com/app-store/submissions/
 [appstoreconnect]: https://developer.apple.com/support/app-store-connect/
+[appstoreconnect_guide]: https://developer.apple.com/support/app-store-connect/
 [appstoreconnect_guide_register]: https://help.apple.com/app-store-connect/#/dev2cd126805
 [appstoreconnect_login]: https://appstoreconnect.apple.com/
-[appstoreconnect_guide]: https://developer.apple.com/support/app-store-connect/
 [codesigning_guide]: https://developer.apple.com/library/content/documentation/Security/Conceptual/CodeSigningGuide/Introduction/Introduction.html
 [Core Foundation Keys]: https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
 [devportal_appids]: https://developer.apple.com/account/ios/identifier/bundle

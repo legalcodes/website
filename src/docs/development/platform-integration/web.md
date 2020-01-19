@@ -5,10 +5,8 @@ description: Some gotchas and differences when writing or running web apps in Fl
 
 ### Is the web version of Flutter ready for production?
 
-As of the 1.9 release, the web version of Flutter
-is available as a technical preview on the master channel.
-Web support has been added to the main Flutter repo,
-but is missing features and has known performance issues.
+As of the 1.12 release, web support for Flutter
+is available on the beta channel.
 **We don't recommend deploying a web app to production.**
 
 ### How do I migrate a web app built using the flutter_web repo to the flutter repo?
@@ -27,7 +25,9 @@ No.
 
 ### Can I use Flutter plugins?
 
-Not yet.
+Yes, several plugins have web support. 
+Find an updated list of plugins on [pub.dev][] using the web filter.
+You can also add web support to existing plugins or [write your own plugins][] for the web.
 
 ### How do I file an issue about web support?
 
@@ -45,7 +45,7 @@ or you can enter "R" in the console where
 
 You can select **Chrome** as the target device in
 Android Studio/IntelliJ and VS Code if you are using the
-latest master channel of Flutter and have enabled web support.
+latest beta channel of Flutter and have enabled web support.
 To enable support, run the following in the terminal:
 
 ```terminal
@@ -161,7 +161,6 @@ Check out the **#web** discussion board on [Discord][].
 Flutter engineers routinely read and respond on Discord.
 
 
-
 [Analyzing performance]: https://developers.google.com/web/tools/chrome-devtools/evaluate-performance
 [Chrome DevTools]: https://developers.google.com/web/tools/chrome-devtools
 [Debugging]: /docs/development/tools/devtools/debugger
@@ -176,3 +175,5 @@ Flutter engineers routinely read and respond on Discord.
 [Running Flutter inspector]: /docs/development/tools/devtools/inspector
 [Upgrading from package:flutter_web to the Flutter SDK]: https://github.com/flutter/flutter/wiki/Upgrading-from-package:flutter_web-to-the-Flutter-SDK
 [widget tests]: /docs/testing#widget-tests
+[pub.dev]: https://pub.dev/flutter/packages?platform=web
+[write your own plugins]: https://medium.com/flutter/how-to-write-a-flutter-web-plugin-5e26c689ea1

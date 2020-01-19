@@ -6,6 +6,9 @@ prev:
 next:
   title: Navigate to a new screen and back
   path: /docs/cookbook/navigation/navigation-basics
+js:
+  - defer: true
+    url: https://dartpad.dev/inject_embed.dart.js
 ---
 
 It's often helpful to guide users through an app as they navigate from screen
@@ -13,8 +16,7 @@ to screen. A common technique to lead users through an app is to animate a
 widget from one screen to the next. This creates a visual anchor connecting
 the two screens.
 
-Use the
-[`Hero`]({{site.api}}/flutter/widgets/Hero-class.html) widget
+Use the [`Hero`][] widget
 to animate a widget from one screen to the next.
 This recipe uses the following steps:
 
@@ -31,9 +33,8 @@ handle animations in the next steps.
 
 {{site.alert.note}}
   This example builds upon the
-  [Navigate to a new screen and
-  back](/docs/cookbook/navigation/navigation-basics)
-  and [Handle taps](/docs/cookbook/gestures/handling-taps) recipes.
+  [Navigate to a new screen and back][]
+  and [Handle taps][] recipes.
 {{site.alert.end}}
 
 ```dart
@@ -127,9 +128,9 @@ Hero(
   widgets, for simplicity.
 {{site.alert.end}}
 
-## Complete example
+## Interactive example
 
-```dart
+```run-dartpad:theme-light:mode-flutter:run-true:width-100%:height-600px:split-60
 import 'package:flutter/material.dart';
 
 void main() => runApp(HeroApp());
@@ -190,4 +191,11 @@ class DetailScreen extends StatelessWidget {
 }
 ```
 
-![Hero demo](/images/cookbook/hero.gif){:.site-mobile-screenshot}
+<noscript>
+  <img src="/images/cookbook/hero.gif" alt="Hero demo" class="site-mobile-screenshot" />
+</noscript>
+
+
+[Handle taps]: /docs/cookbook/gestures/handling-taps
+[`Hero`]: {{site.api}}/flutter/widgets/Hero-class.html
+[Navigate to a new screen and back]: /docs/cookbook/navigation/navigation-basics
